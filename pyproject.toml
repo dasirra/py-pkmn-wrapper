@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pokeapi_wrapper_dasirra"
+version = "0.0.1"
+authors = [{ name = "Example Author", email = "author@example.com" }]
+description = "A lightweight Python wrapper for the PokéAPI"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = ["requests>=2.25.1", "ascii_magic>=0.2.1"]
+
+[project.urls]
+Homepage = "https://github.com/dasirra/pokeapi_wrapper"
+Issues = "https://github.com/dasirra/pokeapi_wrapper/issues"
