@@ -22,7 +22,6 @@ class PokeAPI:
         """
         Initialize the PokéAPI client
         """
-        self.session = requests.Session()
         self.logger = logging.getLogger("pokeapi_wrapper")
 
     def _make_request(self, endpoint, params=None):
@@ -43,7 +42,7 @@ class PokeAPI:
         url = urljoin(self.BASE_URL, endpoint)
 
         try:
-            response = self.session.get(url, params=params)
+            response = requests.get(url, params=params)
             response.raise_for_status()
             data = response.json()
             return data

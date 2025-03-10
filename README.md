@@ -2,77 +2,6 @@
 
 A minimal Python wrapper for the PokéAPI with Pokémon visualization capabilities.
 
-## Installation
-
-```bash
-pip install pokeapi-wrapper
-```
-
-## Usage
-
-```python
-from pokeapi_wrapper import PokeAPI
-
-# Initialize the API client
-api = PokeAPI()
-
-# Get a Pokémon and display its information with ASCII art
-pikachu = api.get_pokemon("pikachu")
-pikachu.show_pokemon()
-
-# Get a Pokémon by name
-print(f"Name: {pikachu.name}")
-print(f"ID: {pikachu.id}")
-print(f"Height: {pikachu.height/10} m")  # Height is in decimeters
-print(f"Weight: {pikachu.weight/10} kg")  # Weight is in hectograms
-
-# Get types
-for type_info in pikachu.types:
-    print(f"Type: {type_info.type['name']}")
-
-# Get abilities
-for ability_info in pikachu.abilities:
-    hidden_text = " (hidden)" if ability_info.is_hidden else ""
-    print(f"Ability: {ability_info.ability['name']}{hidden_text}")
-
-# Display colored ASCII art of the Pokémon
-ascii_art = pikachu.get_ascii_sprite(width=60, colored=True)
-print(ascii_art)
-
-# Display non-colored ASCII art
-bw_ascii_art = pikachu.get_ascii_sprite(width=60, colored=False)
-print(bw_ascii_art)
-
-# Display shiny version
-shiny_ascii_art = pikachu.get_ascii_sprite(width=60, shiny=True)
-print(shiny_ascii_art)
-
-# Display back view
-back_ascii_art = pikachu.get_ascii_sprite(width=60, back=True)
-print(back_ascii_art)
-
-# Get a Pokémon by ID
-charizard = api.get_pokemon(6)
-print(f"Name: {charizard.name}")
-
-# Get a list of Pokémon
-pokemon_list = api.get_pokemon_list(limit=5)
-print(f"Total count: {pokemon_list.count}")
-
-for pokemon in pokemon_list.results:
-    print(f"- {pokemon['name']} (ID: {pokemon['id']})")
-```
-
-## Terminal Pokédex Application
-
-The package includes a terminal-based Pokédex application that allows you to search for Pokémon and view their stats and ASCII art representation.
-
-### Running the Pokédex
-
-```bash
-python pokedex.py
-```
-
 ### Features
 
 - Search for any Pokémon by name
@@ -132,6 +61,52 @@ This displays:
 - Abilities (including hidden abilities)
 - Base stats
 - ASCII art sprite
+
+## Testing
+
+The package includes a comprehensive test suite using pytest. To run the tests:
+
+```bash
+# Install test dependencies
+pip install pytest
+
+# Run the tests
+pytest
+```
+
+### Test Philosophy
+
+Our tests follow these principles:
+
+- **Direct Testing**: We test functions and methods directly without mocks or fixtures
+- **Function Existence**: We verify that functions exist and have the correct signatures
+- **Integration Tests**: We include optional integration tests that can be run when needed
+- **Simple and Readable**: Tests are straightforward and easy to understand
+
+### Test Coverage
+
+The test suite covers:
+- API client functionality
+- Pokemon model and related classes
+- ASCII art generation utilities
+
+### Running Specific Tests
+
+You can run specific test categories:
+
+```bash
+# Run all tests
+pytest
+
+# Run API tests
+pytest tests/test_api.py
+
+# Run model tests
+pytest tests/test_models.py
+
+# Run integration tests (normally skipped)
+pytest -v tests/test_api.py::TestPokeAPI::test_get_pokemon_integration
+```
 
 ## License
 

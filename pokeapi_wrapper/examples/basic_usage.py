@@ -4,10 +4,8 @@ Basic usage examples for the PokéAPI wrapper
 """
 
 import sys
-import os
 
-# Add the parent directory to the path so we can import the package
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.append("../..")  # this is including the parent directory in the path
 
 from pokeapi_wrapper.api import PokeAPI
 
@@ -37,9 +35,7 @@ def main():
 
     # Display colored ASCII art of Pikachu
     print("\nPikachu Colored ASCII Art:")
-    ascii_art = pikachu.get_ascii_sprite(width=60)
-    if ascii_art:
-        print(ascii_art)
+    pikachu.get_ascii_sprite(width=60)
 
     print("\nFetching Charizard...")
     charizard = api.get_pokemon("charizard")
@@ -47,9 +43,7 @@ def main():
 
     # Display ASCII art of Charizard (front)
     print("\nCharizard ASCII Art (Front):")
-    charizard_ascii = charizard.get_ascii_sprite(width=70)
-    if charizard_ascii:
-        print(charizard_ascii)
+    charizard.get_ascii_sprite(width=70)
 
     # Try a few more Pokémon
     print("\nFetching Gengar...")
@@ -57,9 +51,7 @@ def main():
     print(f"Name: {gengar.name}")
 
     print("\nGengar ASCII Art:")
-    gengar_ascii = gengar.get_ascii_sprite(width=60)
-    if gengar_ascii:
-        print(gengar_ascii)
+    gengar.get_ascii_sprite(width=60)
 
     print("\nFetching a list of Pokemon...")
     pokemon_list = api.get_pokemon_list(limit=5)

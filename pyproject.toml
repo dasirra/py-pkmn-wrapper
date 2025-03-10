@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pokeapi_wrapper_dasirra"
 version = "0.0.1"
-authors = [{ name = "Example Author", email = "author@example.com" }]
+authors = [{ name = "dasirra", email = "dasirra@gmail.com" }]
 description = "A lightweight Python wrapper for the PokéAPI"
 readme = "README.md"
 requires-python = ">=3.8"
